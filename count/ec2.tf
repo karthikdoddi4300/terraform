@@ -3,15 +3,15 @@ resource "aws_instance" "example" {
   ami           = "ami-0220d79f3f480ecf5"
   instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-
   tags = {
     Name = var.instances[count.index]
-    Project = "RoboShop"
+    Project = " RoboShop"
   }
 }
 
-resource "aws_security_group" "allow_tls" { # allow_tls this is for terrafomr reference  
-  name        = "allow_all_traffic" #  this is for aws understanding 
+# allow_tls this is for terrafomr reference  
+resource "aws_security_group" "allow_tls" { 
+  name        = "allow_all_roboshop" #  this is for aws understanding 
   description = "Allow TLS inbound traffic and all outbound traffic"
   
   egress {
