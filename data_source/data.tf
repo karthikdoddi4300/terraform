@@ -23,7 +23,7 @@ data "aws_instances" "terraform_instance"{
   instance_state_names = ["running"]
   filter {
     name = "instance_ids"
-    values = 
+    values = ""
   }
 
 
