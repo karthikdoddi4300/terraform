@@ -12,37 +12,36 @@ variable "instance_type" {
 }
 
 variable "ec2_tags" {
-    type = map
+    type = map 
     default = {
-    Name = "terraform"
-    Project = " RoboShop"
-    Terraform = "true"
-    Environment = " Dev"
-  }
+        Name = " variables demo "
+        Project = " roboshop"
+        Terraform = " true"
+        Environment = "dev"
+    }
+  
 }
 
 variable "sg_name" {
-    type = string
-    default = "allow_all_traffic_default"
-
+    type =  string
+    default = "allow-all-traffic"
+  
 }
 
 variable "sg_description" {
     type = string
-    default = "Allow TLS inbound traffic and all outbound traffic"
-  
+    default = "allow all inbound traffic and all outbound traffic"
+
 }
 
 variable "sg_from_port" {
     type = number
     default = 0
-  
 }
 
 variable "sg_to_port" {
-    type = number
-    default = 0
-  
+  type = number
+  default = 0
 }
 
 variable "cidr_blocks" {
@@ -51,11 +50,13 @@ variable "cidr_blocks" {
 }
 
 variable "sg_tags" {
-    type =  map
+    type = map
     default = {
-        Name = "allow_all_traffic"
-        Project = " RoboShop"
-        Terraform = "true"
-        Environment = " Dev"
+        Name = " Allow-all-terraform"
+         Project = " roboshop"
+        Terraform = " true"
+        Environment= " dev"
+
     }
+  
 }
