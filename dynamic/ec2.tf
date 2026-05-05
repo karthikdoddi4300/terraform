@@ -9,7 +9,8 @@ resource "aws_instance" "example" {
   }
 }
 
-resource "aws_security_group" "allow_tls" { # allow_tls this is for terrafomr reference  
+# allow_tls this is for terrafomr reference  
+resource "aws_security_group" "allow_tls" { 
   name        = "allow_all_traffic" #  this is for aws understanding 
   description = "Allow TLS inbound traffic and all outbound traffic"
   
@@ -20,19 +21,19 @@ resource "aws_security_group" "allow_tls" { # allow_tls this is for terrafomr re
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-
-# here the ingress is going to be special variable 
-
+ # dynamic is used to iterate the blocks not list or map 
+ # here the special varaible is the "ingress"
    dynamic "ingress" {
     for_each = var.ingress_rules
     content {
-        from_port        = ingress.value.port
-        to_port          = ingress.value.port
-        protocol         = "tcp"
-        cidr_blocks      = ingress.value.cidr_blocks
-        description = ingress.value.description
+    from_port        = ingress.value.port
+    to_port          = ingress.value.port
+    protocol          = "tcp"
+    cidr_blocks      = ingress.value.cidr_blocks
+    description      = ingress.value.description
+   
     }
-    
+
   }
 
   tags = {
